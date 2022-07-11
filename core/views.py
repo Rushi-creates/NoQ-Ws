@@ -1,4 +1,5 @@
 #from appNameFolder.fileName import func/className
+import json
 from core.models import  AuthUser, MemberProfile , Queue,QueueUser
 from core.myPaginations import MyCustomPagination
 from core.serializers import  AuthUserSerializer,MemberProfileSerializer,QueueSerializer,QueueUserSerializer
@@ -293,6 +294,9 @@ def helperWSToCallIn_CrudQueueUser(my_q_uid
         "totalOrders" : totalOrders
         # "orderNumber" : orderNumber,
     }
+
+    # print(type(storeResponse))
+    # convertedResposne = json.dumps(storeResponse)
    
 
 

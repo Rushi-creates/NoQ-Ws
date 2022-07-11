@@ -19,15 +19,15 @@ class QueueLiveData(JsonWebsocketConsumer):
         ) 
 
 
-        # to send something to a particular channel only ( real time ) , NOT to whole group
-        # can be used for sending notifications ( just add celery or cron jobs)
-        async_to_sync(self.channel_layer.send)(
-        self.channel_name,     #Todo : pass group name here
-        {
-            'type' : 'particular.liveData',
-            'message' : 'particular msg'   #Todo : pass message here
-            }
-        )
+        ## to send something to a particular channel only ( real time ) , NOT to whole group
+        ## can be used for sending notifications ( just add celery or cron jobs)
+        # async_to_sync(self.channel_layer.send)(
+        # self.channel_name,     #Todo : pass group name here
+        # {
+        #     'type' : 'particular.liveData',
+        #     'message' : 'particular msg'   #Todo : pass message here
+        #     }
+        # )
 
         
         self.accept()
@@ -47,9 +47,9 @@ class QueueLiveData(JsonWebsocketConsumer):
 
 
     
-    def particular_liveData(self,event):
-        print(event['message'])
-        self.send_json(event['message'])
+    # def particular_liveData(self,event):
+    #     print(event['message'])
+    #     self.send_json(event['message'])
 
 
           # #! to send something to client , when msg is added to group ( from above)
@@ -59,7 +59,7 @@ class QueueLiveData(JsonWebsocketConsumer):
         print('channel name is ' ,self.channel_name)
         print('Event is ' , event)
         self.send_json(event['message'])  # send data to client based on what queue's id he sends in content
-
+        
 
 
     def disconnect(self, code):        
